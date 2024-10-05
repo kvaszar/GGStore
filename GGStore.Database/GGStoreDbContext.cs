@@ -2,6 +2,7 @@
 using GGStore.Database.EntityTypeConfigurations;
 using Microsoft.EntityFrameworkCore;
 using GGStore.Domain.GameDomain;
+using GGStore.Domain.GenreDomain;
 
 namespace GGStore.Database;
 

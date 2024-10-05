@@ -11,7 +11,12 @@ public class Startup(IConfiguration configuration)
         services.AddSwaggerGen();
 
         services.AddServices();
-        services.AddDependencyDB(configuration);
+        services.AddDbDependencies(configuration);
+        
+        services.AddControllersWithViews()
+            .AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+        );
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

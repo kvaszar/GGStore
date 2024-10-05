@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GGStore.Database.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class Switchtosqlite : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,12 +15,12 @@ namespace GGStore.Database.Migrations
                 name: "Games",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Publisher = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateRelease = table.Column<DateOnly>(type: "date", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", maxLength: 250, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    Publisher = table.Column<string>(type: "TEXT", nullable: false),
+                    DateRelease = table.Column<DateOnly>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,9 +31,9 @@ namespace GGStore.Database.Migrations
                 name: "Genres",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Title = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,8 +44,8 @@ namespace GGStore.Database.Migrations
                 name: "GameGenre",
                 columns: table => new
                 {
-                    GamesId = table.Column<int>(type: "int", nullable: false),
-                    GenresId = table.Column<int>(type: "int", nullable: false)
+                    GamesId = table.Column<int>(type: "INTEGER", nullable: false),
+                    GenresId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,6 +68,12 @@ namespace GGStore.Database.Migrations
                 name: "IX_GameGenre_GenresId",
                 table: "GameGenre",
                 column: "GenresId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Games_Id",
+                table: "Games",
+                column: "Id",
+                unique: true);
         }
 
         /// <inheritdoc />

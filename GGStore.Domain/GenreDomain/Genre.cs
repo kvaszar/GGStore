@@ -1,6 +1,6 @@
 ﻿using GGStore.Domain.GameDomain;
 
-namespace GGStore.Domain;
+namespace GGStore.Domain.GenreDomain;
 
 public class Genre
 {

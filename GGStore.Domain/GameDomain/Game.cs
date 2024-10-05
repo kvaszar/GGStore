@@ -1,4 +1,6 @@
-﻿namespace GGStore.Domain.GameDomain;
+﻿using GGStore.Domain.GenreDomain;
+
+namespace GGStore.Domain.GameDomain;
 
 public class Game
 {
@@ -8,4 +10,6 @@ public class Game
     public required List<Genre> Genres { get; set; }
     public required string Publisher { get; set; }
     public required DateOnly DateRelease { get; set; }
+    
+    
 }
