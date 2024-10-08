@@ -1,8 +1,9 @@
-﻿using GGStore.Domain.GameDomain.Interfaces;
+﻿using AutoMapper;
+using GGStore.Domain.GameDomain.Interfaces;
 
 namespace GGStore.Domain.GameDomain;
 
-public class GameService(IGameRepository gameRepository) : IGameService
+public class GameService(IMapper mapper, IGameRepository gameRepository) : IGameService
 {
     public Task<int> AddAsync(GameDto gameDto) =>
         gameRepository.AddAsync(gameDto);
@@ -16,6 +17,11 @@ public class GameService(IGameRepository gameRepository) : IGameService
     public IEnumerable<Game> GetAll() =>
         gameRepository.GetAll();
 
-    public Task<Game> GetByIdAsync(int id) =>
-         gameRepository.GetByIdAsync(id);
+    public async Task<GameVM> GetByIdAsync(int id)
+    {
+        var game = await gameRepository.GetByIdAsync(id);
+        var gameVM = mapper.Map<GameVM>(game);
+
+        return gameVM;
+    }
 }

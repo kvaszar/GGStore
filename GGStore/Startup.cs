@@ -1,5 +1,6 @@
 ﻿using GGStore.Domain;
 using GGStore.Database;
+using AutoMapper;
 
 namespace GGStore;
 
@@ -9,6 +10,14 @@ public class Startup(IConfiguration configuration)
     {
         services.AddControllers();
         services.AddSwaggerGen();
+        IEnumerable<Profile> enumerableOfProfiles = new List<MappingProfile> { new MappingProfile() };
+        var mapperConfig = new MapperConfiguration(mc =>
+        {
+            mc.AddProfiles(enumerableOfProfiles);
+        });
+
+        IMapper mapper = mapperConfig.CreateMapper();
+        services.AddSingleton(mapper);
 
         services.AddServices();
         services.AddDbDependencies(configuration);

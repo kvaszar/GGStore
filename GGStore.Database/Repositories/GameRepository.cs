@@ -60,8 +60,8 @@ public class GameRepository(GGStoreDbContext context) : IGameRepository
     }
 
     public IEnumerable<Game> GetAll() =>
-        context.Games;
+        context.Games.Include(x => x.Genres);
 
     public async Task<Game> GetByIdAsync(int id) =>
-        await context.Games.SingleAsync(game => game.Id == id);
+        await context.Games.Include(x => x.Genres).SingleAsync(game => game.Id == id);
 }
