@@ -1,0 +1,47 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:GGStore.Avalonia.ViewModels"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:converters="clr-namespace:GGStore.Avalonia.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GGStore.Avalonia.Views.GamesTableView"
+             x:DataType="viewModels:GamesTableViewModel">
+    <UserControl.Resources>
+        <converters:DateOffsetConverter x:Key="DateOffsetConverter" />
+    </UserControl.Resources>
+    <Grid RowDefinitions="* Auto Auto" Margin="16">
+        <DataGrid ItemsSource="{Binding Games}"
+                  IsReadOnly="False"
+                  CanUserReorderColumns="True"
+                  CanUserSortColumns="True"
+                  CanUserResizeColumns="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" />
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
+                <DataGridTextColumn Header="Publisher" Binding="{Binding Publisher}" />
+                <DataGridTemplateColumn Header="Release date">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker
+                                SelectedDate="{Binding DateRelease, Converter={StaticResource DateOffsetConverter}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="{avalonia:MaterialIconExt Kind=Close}"
+                                    Command="{Binding }"
+                                    CommandParameter="{Binding Id}"
+                                    Background="Transparent" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="1" Command="{Binding FetchGamesCommand}" Margin="8">Fetch Games</Button>
+        <Button Grid.Row="2" Command="{Binding UpdateGamesCommand}" Margin="8">Save changes</Button>
+    </Grid>
+</UserControl>

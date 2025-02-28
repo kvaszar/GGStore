@@ -1,7 +1,7 @@
 ﻿using Avalonia;
 using System;
 
-namespace TestAvaloniaApp;
+namespace GGStore.Avalonia;
 
 sealed class Program
 {

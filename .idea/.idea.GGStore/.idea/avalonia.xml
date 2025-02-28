@@ -3,6 +3,12 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="GGStore.Avalonia/App.axaml" value="GGStore.Avalonia/GGStore.Avalonia.csproj" />
+        <entry key="GGStore.Avalonia/Views/GameDetailsView.axaml" value="GGStore.Avalonia/GGStore.Avalonia.csproj" />
+        <entry key="GGStore.Avalonia/Views/GamesTableView.axaml" value="GGStore.Avalonia/GGStore.Avalonia.csproj" />
+        <entry key="GGStore.Avalonia/Views/GamesView.axaml" value="GGStore.Avalonia/GGStore.Avalonia.csproj" />
+        <entry key="GGStore.Avalonia/Views/GenreTableView.axaml" value="GGStore.Avalonia/GGStore.Avalonia.csproj" />
+        <entry key="GGStore.Avalonia/Views/MainWindow.axaml" value="GGStore.Avalonia/GGStore.Avalonia.csproj" />
         <entry key="TestAvaloniaApp/App.axaml" value="TestAvaloniaApp/TestAvaloniaApp.csproj" />
         <entry key="TestAvaloniaApp/Views/MainWindow.axaml" value="TestAvaloniaApp/TestAvaloniaApp.csproj" />
       </map>

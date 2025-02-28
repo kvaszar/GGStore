@@ -1,9 +1,9 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace TestAvaloniaApp.Models;
+namespace GGStore.Avalonia.Models;
 
-public class GameModel
+public class Game
 {
     [JsonPropertyName("id")] public required int Id { get; set; }
 

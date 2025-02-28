@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace TestAvaloniaApp.ViewModels;
+namespace GGStore.Avalonia.ViewModels;
 
 public class ViewModelBase : ObservableObject
 {

@@ -1,9 +1,9 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using TestAvaloniaApp.ViewModels;
+using GGStore.Avalonia.ViewModels;
 
-namespace TestAvaloniaApp;
+namespace GGStore.Avalonia;
 
 public class ViewLocator : IDataTemplate
 {

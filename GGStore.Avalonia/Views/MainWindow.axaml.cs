@@ -1,6 +1,7 @@
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 
-namespace TestAvaloniaApp.Views;
+namespace GGStore.Avalonia.Views;
 
 public partial class MainWindow : Window
 {
